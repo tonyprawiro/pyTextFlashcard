@@ -15,7 +15,7 @@ try:
 	sFlashcardsName = sys.argv[1]
 except:
 	print "Usage: flashcards-engine.py QuizName"
-	print "E.g.: flashcards-engine.py WORLDHISTORY"
+	print "E.g.: flashcards-engine.py HISTORICALFIGURES"
 	sys.exit(1)
 
 # Check for file existence
@@ -59,8 +59,8 @@ with open(sFlashcardsFile) as fCards:
 				aCurrentCard = {}
 				iCurrentCardState = 0
 				bInACard = False
-				iCardNumber += 1
 				aCardsShuffler.append(iCardNumber)
+				iCardNumber += 1
 		elif line == "|" and bInACard and iCurrentCardState == 1:
 			iCurrentCardState = 2
 		elif bInACard:
@@ -156,12 +156,12 @@ with open(sAssessmentFilename, 'w') as f:
 		f.write("[%s]\n" % (aSectionName))
 		iTotal = aSectionData["Correct"] + aSectionData["Incorrect"]
 		if iTotal == 0:
+			f.write("N/A (no answers)\n")
+		else:
 			f.write("Correct: %d\n" % (aSectionData["Correct"]))
 			f.write("Incorrect: %d\n" % (aSectionData["Incorrect"]))
 			fPercentage = aSectionData["Correct"] * 100 / iTotal
 			f.write("Percentage: %.1f%%\n" % ( fPercentage ))
-		else:
-			f.write("N/A (no answers)")
 	f.close()
 
 print "Details have been saved to %s" % (sAssessmentFilename)
