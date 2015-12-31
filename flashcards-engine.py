@@ -142,7 +142,10 @@ else:
 	iAllPercentage = iCorrect * 100 / iAllTotal
 
 print "Date/time: %s" % (time.strftime("%Y-%m-%d %H:%M"))
-print "Correct: %.1f%%" % (iAllPercentage)
+print "Total: %d" % (iCorrect + iIncorrect)
+print "Correct: %d" % (iCorrect)
+print "Incorrect: %d" % (iIncorrect)
+print "Percentage: %.1f%%" % (iAllPercentage)
 
 sAssessmentFilename = "%s-ASSESSMENT-%s.txt" % (sFlashcardsName, time.strftime("%Y%m%d-%H%M"))
 
